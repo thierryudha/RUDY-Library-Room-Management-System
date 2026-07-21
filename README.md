@@ -72,24 +72,7 @@ This project is under active development. Features, APIs, and documentation will
 
 ## 🏗️ System Architecture
 
-```text
-                    Client
-                       │
-                       ▼
-                Next.js Frontend
-                       │
-                 HTTPS / REST API
-                       │
-                       ▼
-           Laravel Standalone API
-                       │
-                 Eloquent ORM
-                       │
-                       ▼
-                 MySQL Database
-```
-
----
+![System Architecture](./docs/RUDY-High-level-System-Architecture.excalidraw.svg)
 
 ## 🛠️ Tech Stack
 
