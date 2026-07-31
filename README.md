@@ -70,7 +70,7 @@ This project is under active development. Features, APIs, and documentation will
 
 ---
 
-## 🏗️ System Architecture
+## 🏗️ System Architecture & Tech Stack
 
 ![System Architecture](./docs/RUDY-High-level-System-Architecture.excalidraw.svg)
 
@@ -94,16 +94,41 @@ This project is under active development. Features, APIs, and documentation will
 
 ### Database
 
-- MySQL
+- PostgreSQL
 
 ### Development Tools
 
-- Docker *(Planned)*
+- Docker 
 - Git
 - GitHub
 - Composer
 - npm
-- Postman / Bruno
+- Postman
+
+---
+
+## 🗄️ Database Architecture & ERD Highlights
+
+![Database Architecture & ERD](./docs/RUDY-ERD-for-Laravel-Standalone-API.png)
+
+This project follows strict relational database design principles and enterprise-grade security standards. Below are the key architectural decisions implemented in the database design:
+
+### 1. Dynamic Role-Based Access Control (RBAC)
+- **Centralized Authentication:** Decoupled generic user credentials (`accounts`) from authorization levels using a master `roles` table (`role_id`).
+- **Granular Authorization:** Supports multi-tier roles (`STUDENT`, `LECTURER`, `STAFF`, `ADMIN`, `SUPER_ADMIN`) seamlessly, enabling dynamic permission checks without hardcoded values.
+
+### 2. Normalized Identity & Access Management (IAM)
+- **Decoupled Identity Schemas:** Applied 3NF normalization by splitting domain-specific profile data (`students`, `lecturers`, `staffs`) from core authentication (`accounts`) using 1-to-1 relationships.
+- **Zero Data Sparsity:** Eliminates sparse tables and unnecessary `NULL` columns while retaining strict schema integrity for varying academic identities.
+- **Verification Workflow:** Integrated `activation_proof_path` for manual/automated credential verification prior to grant room booking privileges.
+
+### 3. Role-Agnostic Group Booking System
+- **Requester vs Participant Separation:** Distinguishes the primary applicant (`created_by_account_id`) from group members using a dedicated junction table (`booking_members`).
+- **Cross-Role Collaboration:** The `booking_members` junction table links directly to `accounts`, allowing flexible group bookings between Students, Lecturers, and Staff without schema redundancy.
+
+### 4. Verified Reviews & Audit Trails
+- **Anti-Spam Feedback System:** The `feedbacks` table strictly enforces 1-to-1/1-to-N relationships bound to `booking_id` and `account_id`, guaranteeing that only users with a verified booking history can submit room ratings and comments.
+- **Data Integrity & Retention:** Crucial tables (`accounts`, `rooms`, `feedbacks`) feature `deleted_at` timestamps for **Soft Delete** support, preserving historical booking analytics and audit trails.
 
 ---
 
