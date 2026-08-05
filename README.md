@@ -1,138 +1,250 @@
-# 📚 RUDY (Ruang Study)
+# 📚 RUDY (Ruang Study) — Library Room Reservation System
 
-> **Currently under active redevelopment.**
+> ⚠️ **Status Proyek:** Sedang dalam tahap perombakan total arsitektur (*Active Redevelopment*).
 
-RUDY (Ruang Study) is a modern web-based room reservation system designed to streamline the process of borrowing study rooms in a library. This project is currently being rebuilt from scratch using a modern API-first architecture to improve scalability, maintainability, security, and developer experience.
+RUDY (Ruang Study) adalah sistem peminjaman ruang belajar berbasis web modern di perpustakaan. Proyek ini dibangun ulang menggunakan arsitektur *API-First* untuk meningkatkan skala (*scalability*), kemudahan pemeliharaan (*maintainability*), dan keamanan sistem.
 
-The previous version was developed using PHP Native (MVC). This repository contains the next generation of RUDY powered by **Laravel as a Standalone REST API** and **Next.js** as the frontend application.
-
----
-
-## 🚧 Project Status
-
-**Current Phase:** Rebuilding (Work in Progress)
-
-This project is under active development. Features, APIs, and documentation will continue to evolve throughout the development process.
+Versi sebelumnya dikembangkan menggunakan PHP Native (MVC). Repositori ini memuat generasi terbaru RUDY yang ditenagai oleh **Laravel sebagai Standalone REST API** dan **Next.js** pada sisi aplikasi *frontend*.
 
 ---
 
-## 🎯 Project Goals
+## 🚧 Status Pengerjaan
 
-- Build a scalable library room reservation system.
-- Implement a clean RESTful API architecture.
-- Separate frontend and backend responsibilities.
-- Follow modern software engineering best practices.
-- Improve maintainability and code quality.
-- Build a production-ready portfolio project.
+*   **Fase Saat Ini:** Re-Engineering & Refactoring (WIP).
+*   Fitur, Dokumentasi API, dan kode program akan terus diperbarui secara berkala.
 
 ---
 
-## ✨ Planned Features
+## 🎯 Target Proyek
 
-### 🔐 Authentication
-
-- User Registration
-- Login & Logout
-- Email Verification
-- Forgot Password & Password Reset
-- JWT Authentication
-- Role-Based Access Control (RBAC)
-
-### 👤 User Features
-
-- Browse Available Rooms
-- View Room Details
-- Book a Study Room
-- Booking History
-- Booking Status Tracking
-- User Profile Management
-- Feedback Submission
-
-### 🛠️ Administrator Features
-
-- Dashboard Analytics
-- User Management
-- Account Verification
-- Room Management (CRUD)
-- Booking Approval & Rejection
-- Booking Monitoring
-- Feedback Management
-- Export Reports
+*   Membangun API peminjaman ruang belajar skala komersial.
+*   Menerapkan arsitektur *Clean RESTful API* & *Service Pattern*.
+*   Pemisahan penuh tanggung jawab *frontend* dan *backend* (*Decoupled*).
+*   Mengikuti standarisasi praktik rekayasa perangkat lunak modern.
+*   Menghasilkan proyek portofolio siap kerja (*production-ready*).
 
 ---
 
-## 👥 User Roles
+## ✨ Fitur Utama (Rencana Kerja)
 
-- Student
-- Lecturer
-- Educational Staff
-- Administrator
+### 🔐 Autentikasi & Otorisasi
+*   Registrasi & aktivasi akun pengguna baru.
+*   Sistem Login & Logout aman.
+*   Fitur lupa kata sandi (*Password Reset*).
+*   Manajemen Token menggunakan Laravel Sanctum.
+*   Otorisasi berbasis peran (*Role-Based Access Control* / RBAC).
+
+### 👤 Fitur Pengguna (Mahasiswa/Dosen)
+*   Pencarian & eksplorasi ruangan tersedia.
+*   Informasi detail fasilitas & kapasitas ruang.
+*   Formulir reservasi ruang belajar digital.
+*   Riwayat & pelacakan status peminjaman berkala.
+*   Manajemen data profil mandiri.
+*   Pengiriman ulasan (*feedback*) pasca-peminjaman.
+
+### 🛠️ Fitur Administrator
+*   Dasbor analitik data peminjaman perpustakaan.
+*   Manajemen verifikasi akun pengguna baru.
+*   Pengelolaan data ruangan (CRUD Ruangan).
+*   Persetujuan & penolakan reservasi masuk.
+*   Monitoring pemakaian ruang secara langsung.
+*   Moderasi ulasan dan pengaduan pengguna.
+*   Ekspor data laporan transaksi mingguan/bulanan.
 
 ---
 
-## 🏗️ System Architecture & Tech Stack
+## 👥 Hak Akses Pengguna
+
+*   👨‍🎓 **Student** (Mahasiswa)
+*   👨‍🏫 **Lecturer** (Dosen)
+*   💼 **Educational Staff** (Tenaga Kependidikan)
+*   🛡️ **Administrator** (Staf Perpustakaan)
+
+---
+
+## 🏗️ Arsitektur Sistem & Teknologi
 
 ![System Architecture](./docs/RUDY-High-level-System-Architecture.excalidraw.svg)
 
-## 🛠️ Tech Stack
+### 🛠️ Kombinasi Teknologi
 
-### Frontend
+#### Sisi Frontend
+*   Next.js (App Router)
+*   React & TypeScript
+*   Tailwind CSS
+*   TanStack Query (React Query)
+*   Axios
 
-- Next.js
-- React
-- TypeScript
-- Tailwind CSS
-- TanStack Query
-- Axios
+#### Sisi Backend
+*   Laravel (Standalone REST API)
+*   Eloquent ORM
+*   Laravel Sanctum (Token-Based Auth)
 
-### Backend
+#### Basis Data
+*   PostgreSQL
 
-- Laravel
-- REST API
-- Eloquent ORM
-- Laravel Sanctum *(or JWT - TBD)*
-
-### Database
-
-- PostgreSQL
-
-### Development Tools
-
-- Docker 
-- Git
-- GitHub
-- Composer
-- npm
-- Postman
+#### Alat Pengembangan
+*   **🐳 Docker** – Digunakan untuk *containerization* guna memastikan lingkungan pengembangan yang konsisten antara lokal dan produksi.
+*   **🤖 OpenCode & CodeGraph** – Memanfaatkan *Agentic Coding AI* dan *Model Context Protocol (MCP) Server* untuk pemetaan struktur kode (*knowledge graph*), navigasi arsitektur kompleks, dan akselerasi pengembangan secara cerdas.
+*   **📦 Package Managers** – Menggunakan **Composer** untuk manajemen dependensi backend (PHP) dan **npm** untuk ekosistem frontend (Node.js).
+*   **🚀 Postman** – Alat utama untuk pengujian, dokumentasi, dan validasi fungsionalitas API.
+*   **🐙 Git & GitHub** – Digunakan untuk kontrol versi (*version control*) dan manajemen repositori dengan penerapan alur kerja yang bersih.
 
 ---
 
-## 🗄️ Database Architecture & ERD Highlights
+## 🗄️ Sorotan Arsitektur Basis Data & ERD
 
-![Database Architecture & ERD](./docs/RUDY-ERD-for-Laravel-Standalone-API.png)
+![Database Architecture & ERD](./docs/RUDY-ERD.png)
 
-This project follows strict relational database design principles and enterprise-grade security standards. Below are the key architectural decisions implemented in the database design:
-
-### 1. Dynamic Role-Based Access Control (RBAC)
-- **Centralized Authentication:** Decoupled generic user credentials (`accounts`) from authorization levels using a master `roles` table (`role_id`).
-- **Granular Authorization:** Supports multi-tier roles (`STUDENT`, `LECTURER`, `STAFF`, `ADMIN`, `SUPER_ADMIN`) seamlessly, enabling dynamic permission checks without hardcoded values.
-
-### 2. Normalized Identity & Access Management (IAM)
-- **Decoupled Identity Schemas:** Applied 3NF normalization by splitting domain-specific profile data (`students`, `lecturers`, `staffs`) from core authentication (`accounts`) using 1-to-1 relationships.
-- **Zero Data Sparsity:** Eliminates sparse tables and unnecessary `NULL` columns while retaining strict schema integrity for varying academic identities.
-- **Verification Workflow:** Integrated `activation_proof_path` for manual/automated credential verification prior to grant room booking privileges.
-
-### 3. Role-Agnostic Group Booking System
-- **Requester vs Participant Separation:** Distinguishes the primary applicant (`created_by_account_id`) from group members using a dedicated junction table (`booking_members`).
-- **Cross-Role Collaboration:** The `booking_members` junction table links directly to `accounts`, allowing flexible group bookings between Students, Lecturers, and Staff without schema redundancy.
-
-### 4. Verified Reviews & Audit Trails
-- **Anti-Spam Feedback System:** The `feedbacks` table strictly enforces 1-to-1/1-to-N relationships bound to `booking_id` and `account_id`, guaranteeing that only users with a verified booking history can submit room ratings and comments.
-- **Data Integrity & Retention:** Crucial tables (`accounts`, `rooms`, `feedbacks`) feature `deleted_at` timestamps for **Soft Delete** support, preserving historical booking analytics and audit trails.
+Proyek ini menerapkan prinsip **Third Normal Form (3NF)**, **proactive concurrency control**, dan **enterprise-grade database security** untuk memastikan integritas data, skalabilitas, serta performa tetap optimal pada beban transaksi yang tinggi.
 
 ---
 
-## 📁 Project Structure
+## 1. Manajemen Akses & Identitas (IAM) & Class Table Inheritance
+
+### Pemisahan Autentikasi & Otorisasi
+Kredensial pengguna dan proses autentikasi disimpan secara terpusat pada tabel `users`, sedangkan tingkat otorisasi dikelola secara dinamis melalui tabel master `roles`. Pendekatan ini memisahkan **authentication** dari **authorization**, sehingga sistem menjadi lebih fleksibel dan mudah dikembangkan.
+
+### Class Table Inheritance (3NF)
+Atribut khusus setiap jenis pengguna dipisahkan ke dalam tabel ekstensi dengan relasi **One-to-One**, seperti:
+
+- `students`
+- `lecturers`
+- `staffs`
+
+Pendekatan **Class Table Inheritance** menjaga skema tetap memenuhi **Third Normal Form (3NF)** dengan menghilangkan *nullable sparse columns*, menghemat ruang penyimpanan, serta mempertahankan integritas atribut khusus seperti:
+
+- `student_id_number`
+- `employee_id_number`
+
+### Workflow Verifikasi Akun
+Kolom `activation_proof_path` pada tabel `students` digunakan untuk menyimpan bukti aktivasi akun aplikasi KUBACA yang nantinya dapat diverifikasi secara manual maupun otomatis agar Mahasiswa dapat memiliki akun RUDY.
+
+---
+
+## 2. Strategi Status Dinamis & Fleksibilitas Bisnis (Pragmatic Schema)
+
+### Menghindari Migrasi Mahal pada Database Produksi
+Kolom status seperti:
+
+- `user_status`
+- `booking_status`
+
+secara sengaja menggunakan tipe data **VARCHAR** dibandingkan **native ENUM** milik database.
+
+Keputusan ini diambil untuk menghindari kebutuhan menjalankan `ALTER TABLE` yang berpotensi menyebabkan **table locking**, downtime, atau proses migrasi yang mahal ketika status baru perlu ditambahkan pada lingkungan produksi.
+
+### Strict Typing di Level Aplikasi
+Walaupun menggunakan `VARCHAR` di database, konsistensi nilai tetap dijaga melalui lapisan aplikasi menggunakan:
+
+- PHP Native Backed Enums
+- Laravel Validation
+- API Request Validation
+
+Pendekatan ini memberikan fleksibilitas tinggi tanpa mengorbankan keamanan maupun konsistensi data.
+
+---
+
+## 3. Peminjaman Kelompok Skala Luas & Integritas Data
+
+### Delegasi Berbasis Audit Trail
+Sistem membedakan secara jelas antara pembuat pemesanan dengan anggota kelompok.
+
+- `created_by_user_id` menyimpan pengguna yang membuat booking.
+- Tabel pivot `booking_members` menyimpan seluruh anggota yang ikut menggunakan ruangan.
+
+Pendekatan ini menjaga audit trail tetap lengkap dan memudahkan pengembangan fitur kolaboratif di masa depan.
+
+### Composite Primary Key
+Untuk mencegah relasi ganda (duplicate relationship), sistem menggunakan **Composite Primary Key** langsung di tingkat database.
+
+Contohnya:
+
+```sql
+PRIMARY KEY (booking_id, user_id)
+```
+
+pada tabel `booking_members`
+
+dan
+
+```sql
+PRIMARY KEY (room_id, facility_id)
+```
+
+pada tabel `room_facilities`.
+
+Pendekatan ini memastikan setiap pasangan relasi hanya dapat muncul satu kali.
+
+### Aturan Foreign Key yang Presisi
+Setiap relasi menerapkan aturan **ON DELETE** sesuai kebutuhan bisnis.
+
+Contohnya:
+
+- `ON DELETE CASCADE` pada `feedbacks.booking_id` agar feedback otomatis dihapus ketika booking dihapus.
+- `ON DELETE RESTRICT` pada data historis pengguna agar jejak audit tetap terjaga dan tidak dapat dihapus secara tidak sengaja.
+
+---
+
+## 4. Rekayasa Performa & High-Concurrency Handling
+
+### Compound Indexing
+Untuk mempercepat proses pengecekan bentrok jadwal (schedule conflict), tabel `bookings` menggunakan indeks multikolom:
+
+```sql
+(room_id, start_at, end_at)
+```
+
+Indeks ini mengoptimalkan pencarian rentang waktu sehingga performa tetap stabil meskipun jumlah transaksi meningkat.
+
+### Pencegahan Race Condition
+Arsitektur dirancang untuk mendukung mekanisme:
+
+- Database Transactions
+- Pessimistic Locking (`lockForUpdate()`)
+
+melalui Laravel ORM.
+
+Strategi ini mencegah terjadinya **double-booking** ketika beberapa pengguna melakukan reservasi ruangan yang sama pada waktu yang hampir bersamaan (dalam hitungan milidetik).
+
+### Preservasi Data Analitik
+Entitas utama disarankan menggunakan mekanisme **Soft Delete** (`deleted_at`), di antaranya:
+
+- `users`
+- `rooms`
+- `bookings`
+- `feedbacks`
+
+Soft Delete memungkinkan data historis tetap tersedia untuk:
+
+- kebutuhan audit,
+- analisis bisnis,
+- pelaporan,
+- machine learning,
+- dan data warehouse,
+
+tanpa mengganggu operasi aplikasi sehari-hari.
+
+---
+
+## Ringkasan Arsitektur
+
+| Area | Pendekatan |
+|------|------------|
+| Database Normalization | Third Normal Form (3NF) |
+| Authentication | Centralized Users Table |
+| Authorization | Role-Based Access Control (RBAC) |
+| Inheritance Strategy | Class Table Inheritance |
+| Status Management | VARCHAR + PHP Native Backed Enums |
+| Many-to-Many Integrity | Composite Primary Keys |
+| Concurrency Control | Transactions + Pessimistic Locking |
+| Query Optimization | Compound Indexes |
+| Audit Strategy | Foreign Key Rules + Soft Deletes |
+| Scalability | Enterprise-Oriented Relational Schema |
+
+---
+
+## 📁 Struktur Folder Proyek
 
 ```text
 rudy/
@@ -141,7 +253,7 @@ rudy/
 │
 ├── frontend/             # Next.js Application
 │
-├── docs/
+├── docs/                 # Berkas Panduan & Dokumentasi Arsitektur
 │   ├── PRD.md
 │   ├── ERD.md
 │   ├── API.md
@@ -152,70 +264,55 @@ rudy/
 
 ---
 
-## 📋 Planned Business Rules
+## 📋 Aturan Bisnis Sistem (Business Rules)
 
-- Maximum booking duration is **3 hours**.
-- One booking per user per day.
-- Prevent overlapping room reservations.
-- Validate room capacity.
-- Booking requires administrator approval.
-- Users can track booking status.
-- Account verification is required before making reservations.
-
----
-
-## 📖 Documentation
-
-The following documentation will be added during development:
-
-- Product Requirements Document (PRD)
-- Entity Relationship Diagram (ERD)
-- API Documentation
-- Database Schema
-- Software Architecture
-- Deployment Guide
+*   Durasi maksimal peminjaman ruangan adalah **3 jam**.
+*   Jatah boking dibatasi maksimal **1 kali per pengguna per hari**.
+*   Sistem wajib **mencegah jadwal peminjaman bentrok** di waktu dan ruang yang sama.
+*   Validasi otomatis kapasitas ruang terhadap jumlah anggota kelompok.
+*   Setiap pengajuan boking membutuhkan persetujuan manual dari Administrator.
+*   Akun pengguna wajib melalui tahap verifikasi admin sebelum dapat melakukan reservasi.
 
 ---
 
-## 🚀 Development Roadmap
+## 📖 Dokumentasi Teknis
 
-- [x] Project Planning
-- [ ] Product Requirements Document (PRD)
-- [ ] Database Design (ERD)
-- [ ] API Design
-- [ ] Laravel Backend Development
-- [ ] Authentication & Authorization
-- [ ] Next.js Frontend Development
-- [ ] Integration Testing
-- [ ] Dockerization
-- [ ] Deployment
+Berkas dokumentasi berikut akan dilengkapi secara bertahap selama masa pengembangan:
+*   Product Requirements Document (PRD)
+*   Entity Relationship Diagram (ERD) Spesifikasi
+*   Dokumentasi Endpoint API (OpenAPI/Swagger)
+*   Skema Migrasi Database
+*   Panduan Pemasangan Lokal & Deployment (Docker Guide)
 
 ---
 
-## 📸 Preview
+## 🚀 Rencana Alur Pengembangan (Roadmap)
 
-Application screenshots will be added after the first functional version is completed.
-
----
-
-## 🤝 Contributing
-
-This project is currently under active development.
-
-Suggestions, issues, and feedback are always welcome.
-
----
-
-## 📄 License
-
-This project is developed for educational and portfolio purposes.
+- [x] Perencanaan Proyek & Desain ERD
+- [ ] Penyusunan Product Requirements Document (PRD)
+- [ ] Finalisasi Desain Endpoint API
+- [ ] Inisialisasi Backend Laravel & Setup Docker
+- [ ] Implementasi Autentikasi Sanctum & Middleware RBAC
+- [ ] Pembuatan Logika Inti Service Pattern (Peminjaman Ruang)
+- [ ] Inisialisasi Frontend Next.js & Integrasi API
+- [ ] Pengujian Sistem secara Menyeluruh (*Integration Testing*)
+- [ ] Deployment ke Server Publik
 
 ---
 
-## 👨‍💻 Author
+## 🤝 Kontribusi
 
-**Thierry Yudha Diantha** & **Muhammad Hanif Zidan**
+Proyek ini dikembangkan secara aktif untuk kebutuhan riset pribadi dan pengembangan portofolio. Saran, kritik, dan laporan *bug* melalui halaman *Issues* sangat kami apresiasi.
 
-Student of Applied Informatics Engineering
+---
 
-Politeknik Negeri Jakarta
+## 📄 Lisensi
+
+Dikembangkan murni untuk kepentingan edukasi, pembelajaran arsitektur, dan portofolio profesional.
+
+---
+
+## 👨‍💻 Tim Pengembang
+
+*   **Thierry Yudha Diantha** — *Applied Informatics Engineering Student, Politeknik Negeri Jakarta*
+*   **Muhammad Hanif Zidan** — *Applied Informatics Engineering Student, Politeknik Negeri Jakarta*
