@@ -293,7 +293,7 @@ Berkas dokumentasi berikut akan dilengkapi secara bertahap selama masa pengemban
 - [ ] Finalisasi Desain Endpoint API
 - [ ] Inisialisasi Backend Laravel & Setup Docker
 - [ ] Implementasi Autentikasi Sanctum & Middleware RBAC
-- [ ] Pembuatan Logika Inti Service Pattern (Peminjaman Ruang)
+- [ ] Pembuatan Logika Inti Service & Repository Interface Pattern (Peminjaman Ruang)
 - [ ] Inisialisasi Frontend Next.js & Integrasi API
 - [ ] Pengujian Sistem secara Menyeluruh (*Integration Testing*)
 - [ ] Deployment ke Server Publik
