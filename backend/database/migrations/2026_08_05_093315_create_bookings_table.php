@@ -1,0 +1,31 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    public function up(): void
+    {
+        Schema::create('bookings', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('room_id')->constrained('rooms')
+                ->onUpdate('no action')->onDelete('restrict');
+            $table->timestamp('start_at');
+            $table->timestamp('end_at');
+            $table->foreignId('created_by_user_id')->constrained('users')
+                ->onUpdate('no action')->onDelete('restrict');
+            $table->string('booking_status', 30);
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->index(['room_id', 'start_at', 'end_at', 'booking_status']);
+        });
+    }
+
+    public function down(): void
+    {
+        Schema::dropIfExists('bookings');
+    }
+};
