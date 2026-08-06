@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -23,9 +24,9 @@ class Booking extends Model
         return $this->belongsTo(User::class, 'created_by_user_id');
     }
 
-    public function bookingMembers(): HasMany
+    public function bookingMembers(): BelongsToMany
     {
-        return $this->hasMany(BookingMember::class);
+        return $this->belongsToMany(User::class, 'booking_members')->withPivot('created_at');
     }
 
     public function feedbacks(): HasMany

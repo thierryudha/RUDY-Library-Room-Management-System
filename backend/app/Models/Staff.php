@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 #[Fillable(['user_id', 'employee_id_number', 'unit_id'])]
 class Staff extends Model
 {
-    protected $table = 'staffs';
     public $timestamps = false;
 
     public function user(): BelongsTo

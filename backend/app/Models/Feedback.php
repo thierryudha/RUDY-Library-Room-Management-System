@@ -11,7 +11,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Feedback extends Model
 {
     use SoftDeletes;
-    protected $table = 'feedbacks';
 
     public function booking(): BelongsTo
     {

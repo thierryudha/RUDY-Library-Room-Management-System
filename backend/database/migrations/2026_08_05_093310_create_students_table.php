@@ -15,7 +15,7 @@ return new class extends Migration
             $table->string('student_id_number', 20)->unique();
             $table->foreignId('study_program_id')->constrained('study_programs')
                 ->onUpdate('no action')->onDelete('no action');
-            $table->integer('class_of');
+            $table->smallInteger('class_of');
             $table->string('activation_proof_path');
         });
     }

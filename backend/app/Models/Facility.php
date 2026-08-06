@@ -13,7 +13,6 @@ class Facility extends Model
 
     public function rooms(): BelongsToMany
     {
-        return $this->belongsToMany(Room::class, 'room_facilities')
-            ->withPivot('description');
+        return $this->belongsToMany(Room::class, 'room_facilities')->withPivot('description');
     }
 }

@@ -15,8 +15,7 @@ class Room extends Model
 
     public function facilities(): BelongsToMany
     {
-        return $this->belongsToMany(Facility::class, 'room_facilities')
-            ->withPivot('description');
+        return $this->belongsToMany(Facility::class, 'room_facilities')->withPivot('description');
     }
 
     public function bookings(): HasMany

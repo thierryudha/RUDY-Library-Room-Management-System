@@ -12,8 +12,8 @@ return new class extends Migration
             $table->id();
             $table->string('room_image_path')->nullable();
             $table->string('room_name', 30);
-            $table->integer('min_capacity');
-            $table->integer('max_capacity');
+            $table->smallInteger('min_capacity');
+            $table->smallInteger('max_capacity');
             $table->text('location');
             $table->timestamps();
             $table->softDeletes();

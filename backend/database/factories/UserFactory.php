@@ -42,10 +42,10 @@ class UserFactory extends Factory
         ]);
     }
 
-    public function mahasiswa(): static
+    public function student(): static
     {
         return $this->state(fn (array $attributes) => [
-            'role_id' => Role::where('role', 'mahasiswa')->value('id'),
+            'role_id' => Role::where('role', 'student')->value('id'),
         ]);
     }
 }

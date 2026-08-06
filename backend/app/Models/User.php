@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+// use Illuminate\Contracts\Auth\MustVerifyEmail; jaga jaga kalau suatu saat tambah fitur email harus verified
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -55,9 +56,9 @@ class User extends Authenticatable
         return $this->hasMany(Booking::class, 'created_by_user_id');
     }
 
-    public function bookingMembers(): HasMany
+    public function bookingMembers(): BelongsToMany
     {
-        return $this->hasMany(BookingMember::class);
+        return $this->belongsToMany(Booking::class, 'booking_members')->withPivot('created_at');
     }
 
     public function feedbacks(): HasMany

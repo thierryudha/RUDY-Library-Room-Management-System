@@ -22,24 +22,32 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Role::insert([
-            ['id' => 1, 'role' => 'admin'],
-            ['id' => 2, 'role' => 'mahasiswa'],
-            ['id' => 3, 'role' => 'dosen'],
-            ['id' => 4, 'role' => 'staff'],
+            ['id' => 1, 'role' => 'super admin'],
+            ['id' => 2, 'role' => 'admin'],
+            ['id' => 3, 'role' => 'student'],
+            ['id' => 4, 'role' => 'lecturer'],
+            ['id' => 5, 'role' => 'staff'],
+            ['id' => 6, 'role' => 'alumni'],
         ]);
 
         Department::insert([
-            ['id' => 1, 'department_name' => 'Teknik Informatika'],
-            ['id' => 2, 'department_name' => 'Sistem Informasi'],
+            ['id' => 1, 'department_name' => 'Teknik Sipil'],
+            ['id' => 2, 'department_name' => 'Teknik Mesin'],
             ['id' => 3, 'department_name' => 'Teknik Elektro'],
+            ['id' => 4, 'department_name' => 'Teknik Informatika dan Komputer'],
+            ['id' => 5, 'department_name' => 'Teknik Grafika dan Penerbitan'],
+            ['id' => 6, 'department_name' => 'Akuntansi'],
+            ['id' => 7, 'department_name' => 'Administrasi Niaga'],
         ]);
 
         StudyProgram::insert([
-            ['id' => 1, 'department_id' => 1, 'program_name' => 'D3 Teknik Informatika'],
-            ['id' => 2, 'department_id' => 1, 'program_name' => 'D4 Teknik Informatika'],
-            ['id' => 3, 'department_id' => 2, 'program_name' => 'D3 Sistem Informasi'],
-            ['id' => 4, 'department_id' => 2, 'program_name' => 'D4 Sistem Informasi'],
-            ['id' => 5, 'department_id' => 3, 'program_name' => 'D3 Teknik Elektro'],
+            ['id' => 1, 'department_id' => 1, 'program_name' => 'D4 Teknik Konstruksi Gedung'],
+            ['id' => 2, 'department_id' => 2, 'program_name' => 'D3 Teknik Mesin'],
+            ['id' => 3, 'department_id' => 3, 'program_name' => 'D3 Teknik Listrik'],
+            ['id' => 4, 'department_id' => 4, 'program_name' => 'D4 Teknik Informatika'],
+            ['id' => 5, 'department_id' => 5, 'program_name' => 'D4 Desain Grafis'],
+            ['id' => 6, 'department_id' => 6, 'program_name' => 'D4 Keuangan dan Perbankan'],
+            ['id' => 7, 'department_id' => 7, 'program_name' => 'D4 Administrasi Bisnis Terapan'],
         ]);
 
         StaffUnit::insert([

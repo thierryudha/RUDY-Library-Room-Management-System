@@ -8,18 +8,21 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('staffs', function (Blueprint $table) {
+        Schema::create('feedback', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique()->constrained('users')
+            $table->foreignId('booking_id')->constrained('bookings')
                 ->onUpdate('no action')->onDelete('cascade');
-            $table->string('employee_id_number', 30)->unique();
-            $table->foreignId('unit_id')->constrained('staff_units')
+            $table->foreignId('user_id')->constrained('users')
                 ->onUpdate('no action')->onDelete('no action');
+            $table->smallIntegerinteger('rating');
+            $table->text('comment')->nullable();
+            $table->timestamps();
+            $table->softDeletes();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('staffs');
+        Schema::dropIfExists('feedback');
     }
 };
