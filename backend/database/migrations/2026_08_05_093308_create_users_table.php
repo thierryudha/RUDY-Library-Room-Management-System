@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('profile_photo_path')->nullable();
             $table->foreignId('role_id')->constrained('roles')->onUpdate('no action')->onDelete('no action');
             $table->string('user_status', 30);
+            $table->timestamps();
             $table->softDeletes();
         });
     }

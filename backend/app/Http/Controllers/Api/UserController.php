@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+// Karena kita menggunakan Service & Repository Layer, tambahkan use service layer nanti
 use App\Http\Controllers\Controller;
 use App\Http\Resources\UserResource;
 use App\Models\User;
@@ -11,32 +12,6 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class UserController extends Controller
 {
-    public function index(): AnonymousResourceCollection
-    {
-        $users = User::with('role')
-            ->when(request('role_id'), fn ($q) => $q->where('role_id', request('role_id')))
-            ->when(request('status'), fn ($q) => $q->where('user_status', request('status')))
-            ->when(request('search'), fn ($q) => $q->where(function ($q) {
-                $q->where('name', 'ilike', '%' . request('search') . '%')
-                    ->orWhere('email', 'ilike', '%' . request('search') . '%');
-            }))
-            ->latest()
-            ->paginate(request('per_page', 15));
+    // gunakan dependency injection: constructor injection untuk service dan method injection untuk form request 
 
-        return UserResource::collection($users);
-    }
-
-    public function show(User $user): UserResource
-    {
-        return new UserResource($user->load('role', 'student.studyProgram', 'lecturer.department', 'staff.unit'));
-    }
-
-    public function updateStatus(Request $request, User $user): JsonResponse
-    {
-        $request->validate(['user_status' => 'required|in:active,inactive,suspended']);
-
-        $user->update(['user_status' => $request->user_status]);
-
-        return response()->json(['message' => 'User status updated', 'user' => new UserResource($user)]);
-    }
 }

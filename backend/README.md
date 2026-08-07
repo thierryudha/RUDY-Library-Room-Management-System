@@ -225,6 +225,11 @@ Soft Delete memungkinkan data historis tetap tersedia untuk:
 
 tanpa mengganggu operasi aplikasi sehari-hari.
 
+### Database Optimization Insights
+- **Scalability:** Menggunakan bawaan `BigInteger` pada tabel inti (`users`, `bookings`) untuk mendukung skalabilitas jangka panjang dan mencegah overflow data.
+- **Storage Efficiency:** Mengoptimalkan tabel master seperti `roles` dan `departments` menggunakan `TinyInteger/SmallInteger` untuk menghemat ruang penyimpanan indeks database hingga 75% pada tabel relasi.
+
+
 ---
 
 ## Ringkasan Arsitektur

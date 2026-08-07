@@ -14,7 +14,7 @@ return new class extends Migration
                 ->onUpdate('no action')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')
                 ->onUpdate('no action')->onDelete('no action');
-            $table->smallIntegerinteger('rating');
+            $table->smallInteger('rating');
             $table->text('comment')->nullable();
             $table->timestamps();
             $table->softDeletes();
