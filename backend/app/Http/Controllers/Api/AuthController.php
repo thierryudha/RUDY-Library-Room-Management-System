@@ -11,55 +11,47 @@ use App\Http\Resources\UserResource;
 use App\Services\AuthService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use App\Traits\ApiResponse;
 
 class AuthController extends Controller
 {
+    use ApiResponse;
     public function __construct(Protected AuthService $authService) {}
 
     public function login(LoginRequest $request): JsonResponse
     {
         $result = $this->authService->login($request->validated());
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Login successful',
-            'data' => [
+        return $this->successResponse(
+            data: [
                 'user' => new UserResource($result['user']),
                 'token' => $result['token'],
             ],
-        ]);
+            message: 'Login successful'
+        );
     }
 
     public function logout(Request $request): JsonResponse
     {
         $request->user()->currentAccessToken()->delete();
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Successfully logged out',
-            'data' => null,
-        ]);
+        return $this->successResponse(message: 'Successfully logged out');
     }
 
     public function profile(Request $request): JsonResponse
     {
         $user = $request->user()->load(['role', 'student', 'lecturer', 'staff']);
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Profile retrieved successfully',
-            'data' => new UserResource($user),
-        ]);
+        return $this->successResponse(
+            data: new UserResource($user),
+            message: 'Profile retrieved successfully'
+        );
     }
 
     public function requestOtp(RequestOtpRequest $request): JsonResponse
     {
         $this->authService->requestOtp($request->validated('email'));
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'OTP sent successfully to your email',
-            'data' => null,
-        ]);
+        return $this->successResponse(message: 'OTP sent successfully to your email');
     }
 
     public function verifyOtp(VerifyOtpRequest $request): JsonResponse
@@ -67,13 +59,12 @@ class AuthController extends Controller
         $validated = $request->validated();
         $resetToken = $this->authService->verifyOtp($validated['email'], $validated['otp_code']);
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'OTP verified successfully',
-            'data' => [
+        return $this->successResponse(
+            data: [
                 'reset_token' => $resetToken,
             ],
-        ]);
+            message: 'OTP verified successfully'
+        );
     }
 
     public function resetPassword(ResetPasswordRequest $request): JsonResponse
@@ -85,10 +76,6 @@ class AuthController extends Controller
             $validated['password']
         );
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Password reset successfully',
-            'data' => null,
-        ]);
+        return $this->successResponse(message: 'Password reset successfully');
     }
 }

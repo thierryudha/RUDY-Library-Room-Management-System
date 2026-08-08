@@ -6,10 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Auth\RegisterRequest;
 use App\Http\Resources\UserResource;
 use App\Services\RegisterService;
+use App\Traits\ApiResponse;
 use Illuminate\Http\JsonResponse;
 
 class RegisterController extends Controller
 {
+    use ApiResponse;
     public function __construct(protected RegisterService $registerService) {}
 
     public function register(RegisterRequest $request): JsonResponse
@@ -17,13 +19,13 @@ class RegisterController extends Controller
         $file = $request->file('activation_proof');
         $result = $this->registerService->registerUser($request->validated(), $file);
 
-        return response()->json([
-            'status' => 'success',
-            'message' => 'Registration successful',
-            'data' => [
+        return $this->successResponse(
+            data: [
                 'user' => new UserResource($result['user']),
                 'token' => $result['token'],
             ],
-        ], 201);
+            message: 'Registration successful',
+            code: 201
+        );
     }
 }
