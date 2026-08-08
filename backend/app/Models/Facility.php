@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-#[Fillable(['facility_name'])]
+#[Fillable(['name'])]
 class Facility extends Model
 {
     public $timestamps = false;

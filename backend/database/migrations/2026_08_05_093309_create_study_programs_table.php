@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('department_id')->constrained('departments')
                 ->onUpdate('no action')->onDelete('no action');
-            $table->string('program_name', 100);
+            $table->string('name', 100);
         });
     }
 

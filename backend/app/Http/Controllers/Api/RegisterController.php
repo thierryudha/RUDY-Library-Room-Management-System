@@ -20,11 +20,11 @@ class RegisterController extends Controller
         $result = $this->registerService->registerUser($request->validated(), $file);
 
         return $this->successResponse(
+            message: 'Registration successful',
             data: [
                 'user' => new UserResource($result['user']),
                 'token' => $result['token'],
             ],
-            message: 'Registration successful',
             code: 201
         );
     }

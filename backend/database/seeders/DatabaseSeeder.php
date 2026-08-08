@@ -22,52 +22,52 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         Role::insert([
-            ['id' => 1, 'role' => 'super admin'],
-            ['id' => 2, 'role' => 'admin'],
-            ['id' => 3, 'role' => 'student'],
-            ['id' => 4, 'role' => 'lecturer'],
-            ['id' => 5, 'role' => 'staff'],
-            ['id' => 6, 'role' => 'alumni'],
+            ['id' => 1, 'name' => 'super admin'],
+            ['id' => 2, 'name' => 'admin'],
+            ['id' => 3, 'name' => 'student'],
+            ['id' => 4, 'name' => 'lecturer'],
+            ['id' => 5, 'name' => 'staff'],
+            ['id' => 6, 'name' => 'alumni'],
         ]);
 
         Department::insert([
-            ['id' => 1, 'department_name' => 'Teknik Sipil'],
-            ['id' => 2, 'department_name' => 'Teknik Mesin'],
-            ['id' => 3, 'department_name' => 'Teknik Elektro'],
-            ['id' => 4, 'department_name' => 'Teknik Informatika dan Komputer'],
-            ['id' => 5, 'department_name' => 'Teknik Grafika dan Penerbitan'],
-            ['id' => 6, 'department_name' => 'Akuntansi'],
-            ['id' => 7, 'department_name' => 'Administrasi Niaga'],
+            ['id' => 1, 'name' => 'Teknik Sipil'],
+            ['id' => 2, 'name' => 'Teknik Mesin'],
+            ['id' => 3, 'name' => 'Teknik Elektro'],
+            ['id' => 4, 'name' => 'Teknik Informatika dan Komputer'],
+            ['id' => 5, 'name' => 'Teknik Grafika dan Penerbitan'],
+            ['id' => 6, 'name' => 'Akuntansi'],
+            ['id' => 7, 'name' => 'Administrasi Niaga'],
         ]);
 
         StudyProgram::insert([
-            ['id' => 1, 'department_id' => 1, 'program_name' => 'D4 Teknik Konstruksi Gedung'],
-            ['id' => 2, 'department_id' => 2, 'program_name' => 'D3 Teknik Mesin'],
-            ['id' => 3, 'department_id' => 3, 'program_name' => 'D3 Teknik Listrik'],
-            ['id' => 4, 'department_id' => 4, 'program_name' => 'D4 Teknik Informatika'],
-            ['id' => 5, 'department_id' => 5, 'program_name' => 'D4 Desain Grafis'],
-            ['id' => 6, 'department_id' => 6, 'program_name' => 'D4 Keuangan dan Perbankan'],
-            ['id' => 7, 'department_id' => 7, 'program_name' => 'D4 Administrasi Bisnis Terapan'],
+            ['id' => 1, 'department_id' => 1, 'name' => 'D4 Teknik Konstruksi Gedung'],
+            ['id' => 2, 'department_id' => 2, 'name' => 'D3 Teknik Mesin'],
+            ['id' => 3, 'department_id' => 3, 'name' => 'D3 Teknik Listrik'],
+            ['id' => 4, 'department_id' => 4, 'name' => 'D4 Teknik Informatika'],
+            ['id' => 5, 'department_id' => 5, 'name' => 'D4 Desain Grafis'],
+            ['id' => 6, 'department_id' => 6, 'name' => 'D4 Keuangan dan Perbankan'],
+            ['id' => 7, 'department_id' => 7, 'name' => 'D4 Administrasi Bisnis Terapan'],
         ]);
 
         StaffUnit::insert([
-            ['id' => 1, 'unit_name' => 'Perpustakaan'],
-            ['id' => 2, 'unit_name' => 'Teknologi Informasi dan Komunikasi'],
-            ['id' => 3, 'unit_name' => 'Rekayasa Teknologi dan Produk Unggulan'],
-            ['id' => 4, 'unit_name' => 'Perawatan dan Perbaikan'],
-            ['id' => 5, 'unit_name' => 'Pengembangan Karier dan Kewirausahaan'],
-            ['id' => 6, 'unit_name' => 'Layanan Uji Kompetensi'],
+            ['id' => 1, 'name' => 'Perpustakaan'],
+            ['id' => 2, 'name' => 'Teknologi Informasi dan Komunikasi'],
+            ['id' => 3, 'name' => 'Rekayasa Teknologi dan Produk Unggulan'],
+            ['id' => 4, 'name' => 'Perawatan dan Perbaikan'],
+            ['id' => 5, 'name' => 'Pengembangan Karier dan Kewirausahaan'],
+            ['id' => 6, 'name' => 'Layanan Uji Kompetensi'],
         ]);
 
         Facility::insert([
-            ['id' => 1, 'facility_name' => 'Proyektor'],
-            ['id' => 2, 'facility_name' => 'AC'],
-            ['id' => 3, 'facility_name' => 'Papan Tulis'],
-            ['id' => 4, 'facility_name' => 'Meja Rapat'],
-            ['id' => 5, 'facility_name' => 'Komputer'],
-            ['id' => 6, 'facility_name' => 'Sound System'],
-            ['id' => 7, 'facility_name' => 'Kursi Rapat'],
-            ['id' => 8, 'facility_name' => 'TV'],
+            ['id' => 1, 'name' => 'Proyektor'],
+            ['id' => 2, 'name' => 'AC'],
+            ['id' => 3, 'name' => 'Papan Tulis'],
+            ['id' => 4, 'name' => 'Meja Rapat'],
+            ['id' => 5, 'name' => 'Komputer'],
+            ['id' => 6, 'name' => 'Sound System'],
+            ['id' => 7, 'name' => 'Kursi Rapat'],
+            ['id' => 8, 'name' => 'TV'],
         ]);
 
         $admin = User::create([
@@ -127,11 +127,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $rooms = [
-            Room::create(['room_name' => 'Ruang Baca 1', 'min_capacity' => 2, 'max_capacity' => 10, 'location' => 'Lantai Ground', 'room_image_path' => null]),
-            Room::create(['room_name' => 'Ruang Diskusi A', 'min_capacity' => 3, 'max_capacity' => 8, 'location' => 'Lantai 1', 'room_image_path' => null]),
-            Room::create(['room_name' => 'Aula Mini', 'min_capacity' => 10, 'max_capacity' => 30, 'location' => 'Lantai 2', 'room_image_path' => null]),
-            Room::create(['room_name' => 'Ruang Seminar', 'min_capacity' => 15, 'max_capacity' => 50, 'location' => 'Lantai 2 ', 'room_image_path' => null]),
-            Room::create(['room_name' => 'Ruang Kolaborasi', 'min_capacity' => 5, 'max_capacity' => 12, 'location' => 'Lantai 3', 'room_image_path' => null]),
+            Room::create(['name' => 'Ruang Baca 1', 'min_capacity' => 2, 'max_capacity' => 10, 'location' => 'Lantai Ground', 'room_image_path' => null]),
+            Room::create(['name' => 'Ruang Diskusi A', 'min_capacity' => 3, 'max_capacity' => 8, 'location' => 'Lantai 1', 'room_image_path' => null]),
+            Room::create(['name' => 'Aula Mini', 'min_capacity' => 10, 'max_capacity' => 30, 'location' => 'Lantai 2', 'room_image_path' => null]),
+            Room::create(['name' => 'Ruang Seminar', 'min_capacity' => 15, 'max_capacity' => 50, 'location' => 'Lantai 2 ', 'room_image_path' => null]),
+            Room::create(['name' => 'Ruang Kolaborasi', 'min_capacity' => 5, 'max_capacity' => 12, 'location' => 'Lantai 3', 'room_image_path' => null]),
         ];
 
         $rooms[0]->facilities()->sync([1 => ['description' => null], 2 => ['description' => null], 4 => ['description' => 'Meja Rapat 12 Orang']]);

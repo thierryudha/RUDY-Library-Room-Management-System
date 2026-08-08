@@ -11,7 +11,7 @@ return new class extends Migration
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
             $table->string('room_image_path')->nullable();
-            $table->string('room_name', 30);
+            $table->string('name', 30);
             $table->smallInteger('min_capacity');
             $table->smallInteger('max_capacity');
             $table->text('location');

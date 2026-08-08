@@ -24,7 +24,7 @@ class MasterDataController extends Controller
 
         return $this->successResponse(
             message: 'Departments retrieved successfully',
-            data: $departments,
+            data: DepartmentResource::collection($departments),
         );
     }
 
@@ -34,8 +34,8 @@ class MasterDataController extends Controller
         $studyPrograms = $this->masterDataService->getStudyPrograms($departmentId ? (int)$departmentId : null);
         
         return $this->successResponse(
+            message: 'Study Programs retrieved successfully',
             data: StudyProgramResource::collection($studyPrograms),
-            message: 'Study Programs retrieved successfully'
         );
     }
 
@@ -44,8 +44,8 @@ class MasterDataController extends Controller
         $roles = $this->masterDataService->getPublicRoles();
 
         return $this->successResponse(
+            message: 'Public roles retrieved successfully',
             data: RoleResource::collection($roles),
-            message: 'Public roles retrieved successfully'
         );
     }
 
@@ -54,8 +54,8 @@ class MasterDataController extends Controller
         $roles = $this->masterDataService->getAllRoles();
 
         return $this->successResponse(
+            message: 'All roles retrieved successfully',
             data: RoleResource::collection($roles),
-            message: 'All roles retrieved successfully'
         );
     }
 
@@ -64,8 +64,8 @@ class MasterDataController extends Controller
         $units = $this->masterDataService->getStaffUnits();
 
         return $this->successResponse(
+            message: 'Staff units retrieved successfully',
             data: StaffUnitResource::collection($units),
-            message: 'Staff units retrieved successfully'
         );
     }
 }

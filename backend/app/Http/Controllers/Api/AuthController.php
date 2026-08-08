@@ -23,11 +23,11 @@ class AuthController extends Controller
         $result = $this->authService->login($request->validated());
 
         return $this->successResponse(
+            message: 'Login successful',
             data: [
                 'user' => new UserResource($result['user']),
                 'token' => $result['token'],
-            ],
-            message: 'Login successful'
+            ]
         );
     }
 
@@ -42,8 +42,8 @@ class AuthController extends Controller
     {
         $user = $request->user()->load(['role', 'student', 'lecturer', 'staff']);
         return $this->successResponse(
-            data: new UserResource($user),
-            message: 'Profile retrieved successfully'
+            message: 'Profile retrieved successfully',
+            data: new UserResource($user)
         );
     }
 
@@ -60,10 +60,10 @@ class AuthController extends Controller
         $resetToken = $this->authService->verifyOtp($validated['email'], $validated['otp_code']);
 
         return $this->successResponse(
+            message: 'OTP verified successfully',
             data: [
                 'reset_token' => $resetToken,
-            ],
-            message: 'OTP verified successfully'
+            ]
         );
     }
 

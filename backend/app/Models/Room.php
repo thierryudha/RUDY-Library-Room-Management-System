@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-#[Fillable(['room_image_path', 'room_name', 'min_capacity', 'max_capacity', 'location'])]
+#[Fillable(['room_image_path', 'name', 'min_capacity', 'max_capacity', 'location'])]
 class Room extends Model
 {
     use SoftDeletes;

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-#[Fillable(['department_id', 'program_name'])]
+#[Fillable(['department_id', 'name'])]
 class StudyProgram extends Model
 {
     public $timestamps = false;
