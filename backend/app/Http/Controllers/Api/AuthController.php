@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-// Karena kita menggunakan Service & Repository Layer, tambahkan use service layer nanti
+// Karena kita menggunakan Service & Repository pattern, tambahkan use service layer nanti
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\Auth\LoginRequest;
 use App\Http\Requests\Api\Auth\RegisterRequest;
