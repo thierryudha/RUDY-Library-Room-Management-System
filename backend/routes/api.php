@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\RegisterController;
+use App\Http\Controllers\Api\MasterDataController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,24 +17,26 @@ use Illuminate\Http\Request;
 */
 
 // ==========================================
+// MASTER DATA ROUTES
+// ==========================================
+Route::prefix('master')->group(function () {
+    Route::get('/departments', [MasterDataController::class, 'getDepartments']);
+    Route::get('/study-programs', [MasterDataController::class, 'getStudyPrograms']);
+    Route::get('/roles/public', [MasterDataController::class, 'getPublicRoles']);
+    Route::get('/staff-units', [MasterDataController::class, 'getStaffUnits']);
+});
+
+// ==========================================
 // PUBLIC ROUTES
 // ==========================================
 Route::prefix('auth')->group(function () {
-    Route::post('/login', function () {
-        return response()->json([
-            'success' => true,
-            'message' => 'Contoh Endpoint Login.',
-            'data' => null,
-        ]);
-    });
+    Route::post('/login', [AuthController::class, 'login']);
+    Route::post('/register', [RegisterController::class, 'register']);
     
-    Route::post('/register', function () {
-        return response()->json([
-            'success' => true,
-            'message' => 'Contoh Endpoint Register.',
-            'data' => null,
-        ]);
-    });
+    // Forgot Password Flow
+    Route::post('/request-otp', [AuthController::class, 'requestOtp']);
+    Route::post('/verify-otp', [AuthController::class, 'verifyOtp']);
+    Route::post('/reset-password', [AuthController::class, 'resetPassword']);
 });
 
 // ==========================================
@@ -40,21 +44,9 @@ Route::prefix('auth')->group(function () {
 // ==========================================
 Route::middleware('auth:sanctum')->group(function () {
     
-    Route::get('/user', function (Request $request) {
-        return response()->json([
-            'success' => true,
-            'message' => 'Data user saat ini.',
-            'data' => $request->user()
-        ]);
-    });
-
-    Route::post('/auth/logout', function (Request $request) {
-        $request->user()->currentAccessToken()->delete();
-        return response()->json([
-            'success' => true,
-            'message' => 'Berhasil logout.',
-            'data' => null
-        ]);
+    Route::prefix('auth')->group(function () {
+        Route::get('/user', [AuthController::class, 'profile']);
+        Route::post('/logout', [AuthController::class, 'logout']);
     });
 
     // ------------------------------------------
@@ -81,5 +73,7 @@ Route::middleware('auth:sanctum')->group(function () {
                 'data' => []
             ]);
         });
+        
+        Route::get('/master/roles/admin', [MasterDataController::class, 'getAllRoles']);
     });
 });
