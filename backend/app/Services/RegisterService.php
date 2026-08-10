@@ -23,6 +23,11 @@ class RegisterService
     public function registerUser(array $data, ?UploadedFile $activationProof = null): array
     {
         return DB::transaction(function () use ($data, $activationProof) {
+            $role = Role::find($data['role_id']);
+            $roleName = strtolower($role->name);
+            
+            $userStatus = ($roleName === 'student') ? 'pending' : 'approved';
+
             // Create user
             $user = User::create([
                 'name' => $data['name'],
@@ -30,10 +35,8 @@ class RegisterService
                 'password' => Hash::make($data['password']),
                 'phone' => $data['phone'],
                 'role_id' => $data['role_id'],
+                'user_status' => $userStatus,
             ]);
-
-            $role = Role::find($data['role_id']);
-            $roleName = strtolower($role->name);
 
             // Handle specific profile creation
             if ($roleName === 'student') {

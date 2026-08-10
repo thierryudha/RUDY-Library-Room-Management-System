@@ -25,7 +25,7 @@ class EnsureUserHasRole
 
         // Assuming User model has a 'role' relationship that returns the Role model
         // which has a 'role' attribute (as defined in migrations).
-        $userRole = $request->user()->role->role ?? null;
+        $userRole = $request->user()->role->name ?? null;
 
         if (! in_array($userRole, $roles)) {
             return $this->errorResponse('Forbidden: You do not have the required role to access this resource.', 403);

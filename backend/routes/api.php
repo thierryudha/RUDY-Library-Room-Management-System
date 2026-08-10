@@ -4,20 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\MasterDataController;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Di sini adalah tempat Anda meregistrasi route API untuk aplikasi Anda.
-| Semua route ini akan dimuat oleh RouteServiceProvider dan otomatis
-| diberikan awalan (prefix) "api".
-|
-*/
+use App\Http\Controllers\Api\Admin\UserManagementController;
 
 // ==========================================
-// MASTER DATA ROUTES
+// MASTER DATA FOR REGISTER ROUTES
 // ==========================================
 Route::prefix('master')->group(function () {
     Route::get('/departments', [MasterDataController::class, 'getDepartments']);
@@ -75,5 +65,11 @@ Route::middleware('auth:sanctum')->group(function () {
         });
         
         Route::get('/master/roles/admin', [MasterDataController::class, 'getAllRoles']);
+
+        // User Management (Admin Panel)
+        Route::prefix('admin/users')->controller(UserManagementController::class)->group(function () {
+            Route::get('/pending-students', 'getPendingStudents');
+            Route::patch('/{id}/status', 'updateStatus');
+        });
     });
 });
