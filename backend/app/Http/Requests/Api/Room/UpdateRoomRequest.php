@@ -8,19 +8,21 @@ class UpdateRoomRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true;
+        $roleName = $this->user()?->role?->name;
+        return in_array($roleName, ['admin', 'super admin']);
     }
 
     public function rules(): array
     {
         return [
-            'room_name' => 'sometimes|string|max:30',
-            'room_image_path' => 'nullable|string|max:255',
+            'name' => 'sometimes|string|max:30',
+            'room_image' => 'nullable|image|max:2048',
             'min_capacity' => 'sometimes|integer|min:1',
             'max_capacity' => 'sometimes|integer|min:1|gte:min_capacity',
             'location' => 'sometimes|string',
             'facilities' => 'nullable|array',
-            'facilities.*' => 'exists:facilities,id',
+            'facilities.*.id' => 'required|exists:facilities,id',
+            'facilities.*.description' => 'nullable|string',
         ];
     }
 }

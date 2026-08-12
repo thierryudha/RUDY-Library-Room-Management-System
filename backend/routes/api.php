@@ -5,6 +5,8 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\RegisterController;
 use App\Http\Controllers\Api\MasterDataController;
 use App\Http\Controllers\Api\Admin\UserManagementController;
+use App\Http\Controllers\Api\RoomController;
+use App\Http\Controllers\Api\FacilityController;
 
 // ==========================================
 // MASTER DATA FOR REGISTER ROUTES
@@ -39,6 +41,10 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/logout', [AuthController::class, 'logout']);
     });
 
+    // Room & Facility (Read Only for all authenticated users)
+    Route::apiResource('rooms', RoomController::class)->only(['index', 'show']);
+    Route::apiResource('facilities', FacilityController::class)->only(['index', 'show']);
+
     // ------------------------------------------
     // ROLE: ADMIN ONLY
     // ------------------------------------------
@@ -71,5 +77,9 @@ Route::middleware('auth:sanctum')->group(function () {
             Route::get('/pending-students', 'getPendingStudents');
             Route::patch('/{id}/status', 'updateStatus');
         });
+
+        // Room & Facility (Create, Update, Delete for admin/super admin)
+        Route::apiResource('rooms', RoomController::class)->except(['index', 'show']);
+        Route::apiResource('facilities', FacilityController::class)->except(['index', 'show']);
     });
 });
