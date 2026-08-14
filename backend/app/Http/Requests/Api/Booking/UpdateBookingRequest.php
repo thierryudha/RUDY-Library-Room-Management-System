@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Validator;
 
-class StoreBookingRequest extends FormRequest
+class UpdateBookingRequest extends FormRequest
 {
     public function authorize(): bool
     {
@@ -50,25 +50,15 @@ class StoreBookingRequest extends FormRequest
                     $validator->errors()->add('start_at', 'Booking is only allowed on weekdays (Monday-Friday).');
                 }
 
-                // 3. Validasi Jam Operasional (09:00 - 15:00) dan Jam Istirahat (11:30 - 12:30)
-                $startAtTimeStr = $startAt->format('H:i');
-                $endAtTimeStr = $endAt->format('H:i');
+                // 3. Validasi Jam Operasional 09:00 - 15:00
+                $startTime = Carbon::createFromTime(9, 0, 0);
+                $endTime = Carbon::createFromTime(15, 0, 0);
+                
+                $startAtTime = $startAt->copy()->setDate($startTime->year, $startTime->month, $startTime->day);
+                $endAtTime = $endAt->copy()->setDate($startTime->year, $startTime->month, $startTime->day);
 
-                // A. Cek di luar jam operasional
-                if ($startAtTimeStr < '09:00' || $endAtTimeStr > '15:00') {
+                if ($startAtTime->lt($startTime) || $endAtTime->gt($endTime)) {
                     $validator->errors()->add('start_at', 'Booking must be within operational hours (09:00 - 15:00).');
-                }
-
-                // B. Cek apakah waktu mulai (start_at) berada di jam istirahat
-                // Karena user harus ambil kunci ke admin, dan admin istirahat 11:30 - 12:30
-                if ($startAtTimeStr >= '11:30' && $startAtTimeStr < '12:30') {
-                    $validator->errors()->add('start_at', 'Booking start time is not allowed during break time (11:30 - 12:30).');
-                }
-
-                // C. Cek apakah waktu selesai (end_at) berada di jam istirahat
-                // Karena user tidak bisa mengembalikan kunci jika admin sedang istirahat
-                if ($endAtTimeStr > '11:30' && $endAtTimeStr < '12:30') {
-                    $validator->errors()->add('end_at', 'Booking end time cannot fall during break time (11:30 - 12:30).');
                 }
 
                 // 4. Validasi Kelipatan 30 Menit

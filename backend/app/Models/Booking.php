@@ -14,6 +14,15 @@ class Booking extends Model
 {
     use SoftDeletes;
 
+    protected function casts(): array
+    {
+        return [
+            'booking_status' => \App\Enums\BookingStatus::class,
+            'start_at' => 'datetime',
+            'end_at' => 'datetime',
+        ];
+    }
+
     public function room(): BelongsTo
     {
         return $this->belongsTo(Room::class);

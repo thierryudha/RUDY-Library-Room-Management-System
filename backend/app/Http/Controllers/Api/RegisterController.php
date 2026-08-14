@@ -12,6 +12,7 @@ use Illuminate\Http\JsonResponse;
 class RegisterController extends Controller
 {
     use ApiResponse;
+    
     public function __construct(protected RegisterService $registerService) {}
 
     public function register(RegisterRequest $request): JsonResponse

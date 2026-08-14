@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\MasterDataController;
 use App\Http\Controllers\Api\Admin\UserManagementController;
 use App\Http\Controllers\Api\RoomController;
 use App\Http\Controllers\Api\FacilityController;
+use App\Http\Controllers\Api\BookingController;
 
 // ==========================================
 // MASTER DATA FOR REGISTER ROUTES
@@ -44,6 +45,18 @@ Route::middleware('auth:sanctum')->group(function () {
     // Room & Facility (Read Only for all authenticated users)
     Route::apiResource('rooms', RoomController::class)->only(['index', 'show']);
     Route::apiResource('facilities', FacilityController::class)->only(['index', 'show']);
+
+    // Bookings
+    Route::prefix('bookings')->controller(BookingController::class)->group(function () {
+        Route::get('/', 'index');
+        Route::post('/', 'store');
+        Route::put('/{booking}', 'update');
+        Route::put('/{booking}/cancel', 'cancel');
+        Route::put('/{booking}/check-in', 'checkIn');
+    });
+
+    // Real-time member search
+    Route::get('/members/search', [BookingController::class, 'searchMember']);
 
     // ------------------------------------------
     // ROLE: ADMIN ONLY

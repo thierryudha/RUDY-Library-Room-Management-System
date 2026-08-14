@@ -21,7 +21,7 @@ Versi sebelumnya dikembangkan menggunakan PHP Native (MVC). Repositori ini memua
 *   Menerapkan arsitektur *Clean RESTful API* & *Service Pattern*.
 *   Pemisahan penuh tanggung jawab *frontend* dan *backend* (*Decoupled*).
 *   Mengikuti standarisasi praktik rekayasa perangkat lunak modern.
-*   Menghasilkan proyek portofolio siap kerja (*production-ready*).
+*   Menghasilkan aplikasi siap produksi. (*production-ready*).
 
 ---
 
@@ -110,7 +110,7 @@ Atribut khusus setiap jenis pengguna dipisahkan ke dalam tabel ekstensi dengan r
 
 - `students`
 - `lecturers`
-- `staffs`
+- `staff`
 
 Pendekatan **Class Table Inheritance** menjaga skema tetap memenuhi **Third Normal Form (3NF)** dengan menghilangkan *nullable sparse columns*, menghemat ruang penyimpanan, serta mempertahankan integritas atribut khusus seperti:
 

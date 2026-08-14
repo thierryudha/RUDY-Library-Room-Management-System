@@ -14,12 +14,7 @@ class FacilityController extends Controller
 {
     use ApiResponse;
 
-    protected FacilityService $facilityService;
-
-    public function __construct(FacilityService $facilityService)
-    {
-        $this->facilityService = $facilityService;
-    }
+    public function __construct(protected FacilityService $facilityService) {}
 
     public function index(): JsonResponse
     {
